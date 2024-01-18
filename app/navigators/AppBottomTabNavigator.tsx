@@ -37,18 +37,21 @@ const AppBottomTabs = observer(() => {
                     tabBarIcon: ({ focused }) => (
                         <Ionicons name="home" color={focused ? colors.tint : undefined} size={20}/>
                     ),
+                    headerShown: false,
                 }}/>
                 <Tab.Screen name="Challenges" component={Screens.ChallengesScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Ionicons name="trophy" color={focused ? colors.tint : undefined} size={20}/>
                     ),
+                    headerShown: false,
                 }}/>
                 <Tab.Screen name="Profile" component={Screens.ProfileScreen} 
                 options={{
                     tabBarIcon : ({ focused }) => (
                         <Ionicons name="person" color={focused ? colors.tint : undefined} size={20}/>
                     ), 
+                    headerShown: false,
                 }}/>
             </Tab.Navigator>
     );
