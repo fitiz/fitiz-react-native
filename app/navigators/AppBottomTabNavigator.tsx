@@ -14,6 +14,7 @@ export type AppBottomTabParamList = {
     Home: undefined;
     Challenges: undefined;
     Profile: undefined;
+    Explore: undefined;
 };
 
 const Tab = createBottomTabNavigator<AppBottomTabParamList>();
@@ -43,6 +44,13 @@ const AppBottomTabs = observer(() => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Ionicons name="trophy" color={focused ? colors.tint : undefined} size={20}/>
+                    ),
+                    headerShown: false,
+                }}/>
+                <Tab.Screen name="Explore" component={Screens.ExploreScreen}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Ionicons name="map" color={focused ? colors.tint : undefined} size={20}/>
                     ),
                     headerShown: false,
                 }}/>
