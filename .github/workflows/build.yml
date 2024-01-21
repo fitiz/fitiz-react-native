@@ -27,5 +27,5 @@ jobs:
         run: yarn install
 
       - name: 🚀 Build app
-        run: eas build --platform all
+        run: eas build --non-interactive --platform all
 
