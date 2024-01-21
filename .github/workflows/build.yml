@@ -4,16 +4,21 @@ on:
     branches:
       - '*'
 jobs:
-  build:
-    name: Build
+
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Specify the Node.js version
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --network-timeout 300000
-      - name: Make Gradlew Executable
-        run: cd android && chmod +x ./gradlew
-      - name: Build Android Release
-        run: |
-          cd android && ./gradlew clean && ./gradlew app:assembleRelease
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build React Native app
+        run: npm run build 
