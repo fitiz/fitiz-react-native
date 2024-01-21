@@ -3,5 +3,14 @@ on:
   push:
     branches:
       - '*'
+jobs:
+  appbuilder:
+    name: test
+    runs-on: self-hosted
+    steps:
+      - name: Show self-hosted machine infomation
+        run: uname -a
+      - name: show d
+        run: echo "sunsd"
 
   
