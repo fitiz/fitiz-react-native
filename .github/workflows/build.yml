@@ -27,10 +27,7 @@ jobs:
         run: yarn install
 
       - name: Doctor
-        run: npx expo-doctor --fix-dependencies
-
-      - name: Doctor 2
-        run: npx expo-doctor
+        run: npx expo install --fix
 
       - name: 🚀 Build app
         run: eas build --platform android 
