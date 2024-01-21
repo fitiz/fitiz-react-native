@@ -8,23 +8,12 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        name: Checkout Repository
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'zulu'
-      - name: Cache Gradle packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle
-      - name: Build with Gradle
-        run: ./gradlew bootJar
-      - name: Upload JAR
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifact
-          path: build/libs/*.jar
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --network-timeout 300000
+      - name: Make Gradlew Executable
+        run: cd android && chmod +x ./gradlew
+      - name: Build Android Release
+        run: |
+          cd android && ./gradlew clean && ./gradlew app:assembleRelease
