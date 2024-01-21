@@ -8,7 +8,6 @@
     "format": "prettier --write \"app/**/*.{js,jsx,json,md,ts,tsx}\"",
     "lint": "eslint App.tsx app test --fix --ext .js,.ts,.tsx && npm run format",
     "patch": "patch-package",
-    "build": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:maestro": "maestro test .maestro/FavoritePodcast.yaml",
