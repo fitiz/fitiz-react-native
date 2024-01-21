@@ -29,7 +29,7 @@
     "serve:web": "npx server dist",
     "prebuild:clean": "npx expo prebuild --clean",
     "prebuild": "npx expo prebuild",
-    "build": "react-scripts build"
+    "build": "eas build:configure"
   },
   "dependencies": {
     "@expo-google-fonts/space-grotesk": "^0.2.2",
