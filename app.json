@@ -4,6 +4,7 @@
   "expo": {
     "name": "fitiz-react-native",
     "slug": "fitiz-react-native",
+    "owner": "expofitiz",
     "scheme": "fitiz-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,8 +16,7 @@
     },
     "extra": {
         "eas": {
-            "projectId": "9bc10f89-02ab-4f01-9277-f5504bad77b3",
-            "owner": "expofitiz"
+            "projectId": "9bc10f89-02ab-4f01-9277-f5504bad77b3"            
         }
     },
     "updates": {
