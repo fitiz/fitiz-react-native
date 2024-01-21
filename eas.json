@@ -7,15 +7,15 @@
       "developmentClient": true,
       "extends": "production",
       "distribution": "internal",
-      "android": {
-        "gradleCommand": ":app:assembleDebug"
-      },
     },
     "development-simulator": {
       "extends": "development",
       "distribution": "internal",
       "ios": {
         "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
       }
     },
     "development:device": {

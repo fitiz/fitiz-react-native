@@ -3,6 +3,7 @@
   "displayName": "fitiz-react-native",
   "expo": {
     "name": "fitiz-react-native",
+    "owner": "expofitiz",
     "slug": "fitiz-react-native",
     "scheme": "fitiz-react-native",
     "version": "1.0.0",
@@ -47,6 +48,9 @@
         "tabletImage": "./assets/images/splash-logo-ios-tablet.png",
         "resizeMode": "contain",
         "backgroundColor": "#191015"
+      },
+      "infoPlist": {
+        "NSMotionUsageDescription": "This app requires access to your motion and fitness data to track your steps.",
       }
     },
     "web": {
@@ -70,6 +74,12 @@
             "newArchEnabled": false
           }
         }
+      ],
+      [
+          "react-native-auth0",
+          {
+              domain: "dev-mewzvus7n0bttt3p.us.auth0.com"
+          }
       ]
     ],
     "experiments": {

@@ -28,6 +28,7 @@ export const AuthProvider: React.FC = ({children}) => {
             try {
                 //check for valid token - if valid, set isAuthenticated to true
                 const credentials = await getCredentials();
+                console.log("Credentials:", credentials);
                 if (credentials) {
                     setAccessToken(credentials.accessToken);
                     setIsAuthenticated(true);
