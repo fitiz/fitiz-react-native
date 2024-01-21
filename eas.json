@@ -9,7 +9,7 @@
       "distribution": "internal",
       "android": {
         "gradleCommand": ":app:assembleDebug"
-      },
+      }
     },
     "development-simulator": {
       "extends": "development",
