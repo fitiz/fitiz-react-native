@@ -8,17 +8,23 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '18' # Specify the Node.js version
+          node-version: 18.x
+          cache: yarn
 
-      - name: Install dependencies
-        run: npm install
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Run tests
-        run: npm test
+      - name: 📦 Install dependencies
+        run: yarn install
 
-      - name: Build React Native app
-        run: npm run build
+      - name: 🚀 Build app
+        run: eas build --non-interactive
