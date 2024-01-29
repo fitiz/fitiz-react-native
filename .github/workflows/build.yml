@@ -26,6 +26,7 @@ jobs:
       - name: 📦 Install dependencies
         run: yarn install
 
-      - name: 🚀 Build app
-        run: eas build --non-interactive --platform all
+      - name: Doctor
+        run: npx expo install --fix
+
 
