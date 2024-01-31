@@ -7,8 +7,16 @@ export type UserFitnessMetrics = {
     startTimestamp?: Date;
     endTimestamp?: Date;
 
-    distance?: number; // km
-    speed?: number; // km/h
-    pace?: number; // sec/km
+    distanceTotal?: number; // m
+
+    distanceIn5SecPeriod?: number; // m
+    speed?: number; // m/s
+    pace?: number; // sec/m
+
     stride?: number; //cm
+
+
+    speedKmH?: number; // km/h
+    calories?: number; // kcal
+
 }

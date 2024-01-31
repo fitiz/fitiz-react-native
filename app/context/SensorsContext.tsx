@@ -238,6 +238,9 @@ export const SensorsProvider: React.FC<SensorsProviderProps> = ({ children }) =>
         const milisecUntilEnd = endDate.getTime() - startDate.getTime();
         
 
+        console.log('milisecUntilEnd: ', milisecUntilEnd);
+        console.log('accelerometerData: ', accelerometerData);
+        console.log('pedometerData: ', pedometerData);
         //reset the current time period for pedometer  
         const timeoutId = setTimeout(() => {
             unsubscribePedometer();
