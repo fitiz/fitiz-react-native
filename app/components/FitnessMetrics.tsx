@@ -14,7 +14,7 @@ export const FitnessMetrics: React.FC<FitnessMetricsProps> = ({ steps, goal, cal
     const formattedGoal: string = new Intl.NumberFormat('en-IN', { style: 'decimal', useGrouping: true }).format(goal).replace(/,/g, ' ');
 
     useEffect(() => {
-        setProgress((goal/steps) * 100);
+        setProgress((steps/goal) * 100);
     }, [steps, goal])
 
     return (
