@@ -232,6 +232,7 @@ export const SensorsProvider: React.FC<SensorsProviderProps> = ({ children }) =>
 
     useEffect(() => {
 
+        console.log('useEffect SensorsContext.tsx');
         subscribePedometer();
         subscribeAccelerometer();
 
