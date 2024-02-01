@@ -6,7 +6,7 @@ import { User, useAuth0 } from 'react-native-auth0';
 import { AccelerometerMeasurement } from 'expo-sensors';
 import { PedometerResult } from 'expo-sensors/build/Pedometer';
 import { saveString, loadString, remove} from 'app/utils/storage';
-
+import { MetricsModal } from 'app/components/MetricsModal';
 
 
 const STRIDE_FACTOR = 0.414;
@@ -90,7 +90,7 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         const stepCount = pedometerData?.steps || 0;
     
         const stride = calculateStride(currentMetrics?.height || 0);
-        const distanceTotalDistance = calculateDistance(stride, stepCount);
+        const distanceTotalDistance = calculateDistance(stride, stepCount) / 1000; //in km
         //const avgLinearAcceleration = calculateAvgLinearAcceleration(accelerometerData || []);
     
         //calculate current speed
@@ -110,15 +110,15 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         const distanceInKm = distanceFor5SecTimePeriod / 1000;
         const paceInMinPerKm = calculatePace(distanceInKm, timeInMin); //in min/km
         
-        console.log('distance (m) 5 Sec TimePeriod: ', distanceFor5SecTimePeriod);
-        console.log('speed (m/s): ', speed);
-        console.log('speed (km/h): ', speedInKmh);
-        console.log('pace (s/m): ', pace);
-        console.log('time (min): ', timeInMin);
-        console.log('distance (km): ', distanceInKm);
-        console.log('pace (min/km): ', paceInMinPerKm);
-        console.log('stepCount: ', stepCount);
-        console.log('distanceTotalDistance: ', distanceTotalDistance);
+        //console.log('distance (m) 5 Sec TimePeriod: ', distanceFor5SecTimePeriod);
+        //console.log('speed (m/s): ', speed);
+        //console.log('speed (km/h): ', speedInKmh);
+        //console.log('pace (s/m): ', pace);
+        //console.log('time (min): ', timeInMin);
+        //console.log('distance (km): ', distanceInKm);
+        //console.log('pace (min/km): ', paceInMinPerKm);
+        //console.log('stepCount: ', stepCount);
+        //console.log('distanceTotalDistance: ', distanceTotalDistance);
         //console.log('avgLinearAcceleration: ', avgLinearAcceleration);
         
         setUserFitnessMetrics((prev) =>{
@@ -142,8 +142,6 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
 
     
     const loadHeightAndWeightFromStorage = async () => {
-        remove('height');
-        remove('weight');
         const height = await loadString('height');
         const weight = await loadString('weight');
         if (height && weight) {
@@ -160,6 +158,8 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         if (!isModalVisible && !heightAndWidthAreSet){
             openModal();
         }
+        console.log('heightAndWidthAreSet: ', heightAndWidthAreSet);
+        console.log('isModalVisible: ', isModalVisible);
         const intervalId = setInterval(() => {
             if (isPedometerAvailable && isAccelerometerAvailable && hasPedometerPermissions && hasAccelerometerPermissions) {
                 calculateMetrics(startDate, endDate, user, userFitnessMetrics, accelerometerData, pedometerData);
@@ -180,6 +180,7 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
             openModal, 
             closeModal
         }}>
+            <MetricsModal visible={isModalVisible} onClose={closeModal} setHeightAndWidth={setHeightAndWidth}  />
             {children}
         </MetricsContext.Provider>
     )

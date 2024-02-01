@@ -46,12 +46,17 @@ export const MetricsModal: React.FC<ModalProps> = ({visible, onClose, setHeightA
             visible={visible} 
             onRequestClose={onClose} 
             transparent={true} >
+
             <View style={styles.modal}>
+                <Text style={styles.infoText}>We need your weight and height to process your fitness metrics</Text>
+                <Text style={styles.infoText}>Please enter them to continue to Homescreen</Text>
+
                 <View style={styles.modalCloseButtonView}>
                     <Ionicons name="close-circle-outline" style={styles.modalCloseIcon} onPress={onClose} />
                 </View>
                 <TextInput 
                     placeholder={weight ? weight.toString() : "Enter your weight (kg)" }
+                    placeholderTextColor="gray"
                     style={styles.textInputWeight}
                     value={weight} 
                     onChangeText={setWeight} 
@@ -59,6 +64,7 @@ export const MetricsModal: React.FC<ModalProps> = ({visible, onClose, setHeightA
                     { weightError ? <Text style={styles.errorWeight}>{weightError}</Text> : null }
                 <TextInput 
                     placeholder={ height ? height.toString() : "Enter your height (cm)" }
+                    placeholderTextColor = "gray"
                     style={styles.textInputHeight}
                     value={height} 
                     onChangeText={setHeight} 
@@ -68,18 +74,21 @@ export const MetricsModal: React.FC<ModalProps> = ({visible, onClose, setHeightA
             </View>
         </Modal>
     )
-
-
 }
 
 
 const styles = StyleSheet.create({
+    infoText: {
+        fontSize: 12,
+        color: '#fff',
+        marginBottom: 20,
+    },
     modal: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0,0,0,.7)'
+        backgroundColor: 'rgba(0,0,0,0.95)'
     },
     textInputWeight: {
         width: '80%',

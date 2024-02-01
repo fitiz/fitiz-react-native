@@ -27,12 +27,13 @@ export const FitnessMetrics: React.FC<FitnessMetricsProps> = ({ steps, goal, cal
                 size={200}
                 width={15}
                 fill={progress}
-                tintColor="#00e0ff"
-                backgroundColor="#3d5875">
+                tintColor="#90EE90"
+                rotation={0}
+                backgroundColor="#808080">
                 {
                     () => (
                         <Text>
-                            {steps}
+                            {progress.toFixed(2)}% completed
                         </Text>
                     )
                 }
