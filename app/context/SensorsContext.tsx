@@ -7,7 +7,6 @@ import { Linking, Alert, Platform } from 'react-native';
 const MAX_DATA_LENGTH = 10; 
 
 interface SensorsContextType {
-    MAX_DATA_LENGTH: number;
     accelerometerData?: AccelerometerMeasurement[];
     pedometerData?: PedometerResult;
     isAccelerometerAvailable: boolean;
@@ -34,7 +33,6 @@ const openSettings = () => {
  
 
 export const SensorsContext = createContext<SensorsContextType>({
-    MAX_DATA_LENGTH,
     isAccelerometerAvailable: false,
     isPedometerAvailable: false,
     hasPedometerPermissions: false,
@@ -263,7 +261,6 @@ export const SensorsProvider: React.FC<SensorsProviderProps> = ({ children }) =>
 
     return (
         <SensorsContext.Provider value={{ 
-            MAX_DATA_LENGTH,
             accelerometerData, 
             pedometerData, 
             isAccelerometerAvailable, 

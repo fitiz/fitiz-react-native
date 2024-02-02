@@ -42,7 +42,7 @@ export const FitnessMetrics: React.FC<FitnessMetricsProps> = ({ steps, goal, cal
             <View style={styles.metricsContainer}>
                 <View style={styles.metrics}>
                     <Text style={styles.metricsText}>Calories</Text>
-                    <Text style={styles.metricsCountText}>{calories}</Text>
+                    <Text style={styles.metricsCountText}>{calories.toFixed(2)} kcal</Text>
                 </View>
                 <View style={styles.metrics}>
                     <Text style={styles.metricsText}>Distance</Text>

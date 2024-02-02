@@ -20,7 +20,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
         <FitnessMetrics
             steps={userFitnessMetrics.stepCount || 0} 
             goal={10000}
-            calories={100}
+            calories={userFitnessMetrics.calories|| 0}
             distance={userFitnessMetrics.distanceTotal || 0}
         />
     </Screen>

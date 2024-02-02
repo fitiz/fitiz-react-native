@@ -53,9 +53,9 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
     const { user } = useAuth0();
     const [userFitnessMetrics, setUserFitnessMetrics] = useState<UserFitnessMetrics>({});
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [heightAndWidthAreSet, setHeightAndWidthAreSet] = useState(false);
 
-    const setHeightAndWidth = (height: number, weight: number) => {
+     const [heightAndWidthAreSet, setHeightAndWidthAreSet] = useState(false);
+       const setHeightAndWidth = (height: number, weight: number) => {
         setIsModalVisible(false);
         setHeightAndWidthAreSet(true);
 
@@ -63,7 +63,7 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         saveString('weight', weight.toString());
 
         setUserFitnessMetrics((prev) => {
-            return { ...prev, height: height, width: weight};
+            return { ...prev, height: height, weight: weight};
         });
     }
         
@@ -105,21 +105,18 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         const speedInKmh = speed * VELOCITY_FROM_MS_TO_KMH;
         const pace = calculatePace(distanceFor5SecTimePeriod, timeInSec); //in s/m
 
+        const MET_SLOW = 2.8;
+        const MET_AVG = 3.5;
+        const MET_FAST = 5;
 
+        const avg_walking_speed_inKmh = 5;
+        const timeSpentWalkingAvg = distanceTotalDistance / avg_walking_speed_inKmh;
+
+        const calories = MET_AVG * (currentMetrics?.weight || 0) * timeSpentWalkingAvg;
         const timeInMin = timeInSec / 60;
         const distanceInKm = distanceFor5SecTimePeriod / 1000;
         const paceInMinPerKm = calculatePace(distanceInKm, timeInMin); //in min/km
         
-        //console.log('distance (m) 5 Sec TimePeriod: ', distanceFor5SecTimePeriod);
-        //console.log('speed (m/s): ', speed);
-        //console.log('speed (km/h): ', speedInKmh);
-        //console.log('pace (s/m): ', pace);
-        //console.log('time (min): ', timeInMin);
-        //console.log('distance (km): ', distanceInKm);
-        //console.log('pace (min/km): ', paceInMinPerKm);
-        //console.log('stepCount: ', stepCount);
-        //console.log('distanceTotalDistance: ', distanceTotalDistance);
-        //console.log('avgLinearAcceleration: ', avgLinearAcceleration);
         
         setUserFitnessMetrics((prev) =>{
             return { 
@@ -135,6 +132,7 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
                 speedKmH: speedInKmh, //in km/h
                 speed: speed, //in m/s
                 pace: pace, //in s/m
+                calories: calories, //in kcal
             }
         });
     }
@@ -145,7 +143,6 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         const height = await loadString('height');
         const weight = await loadString('weight');
         if (height && weight) {
-            console.log("LOADED FROM LOCAL STORAGE");
             setHeightAndWidth(parseInt(height), parseInt(weight));
             setHeightAndWidthAreSet(true);
             return true;
@@ -158,8 +155,8 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         if (!isModalVisible && !heightAndWidthAreSet){
             openModal();
         }
-        console.log('heightAndWidthAreSet: ', heightAndWidthAreSet);
-        console.log('isModalVisible: ', isModalVisible);
+
+
         const intervalId = setInterval(() => {
             if (isPedometerAvailable && isAccelerometerAvailable && hasPedometerPermissions && hasAccelerometerPermissions) {
                 calculateMetrics(startDate, endDate, user, userFitnessMetrics, accelerometerData, pedometerData);
@@ -167,10 +164,11 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
         }, 5000);
 
 
-        console.log('userFitnessMetrics: ', userFitnessMetrics);
+        return () => { 
+            clearInterval(intervalId);
+        }
 
-        return () => clearInterval(intervalId);
-    }, [isModalVisible]);
+    }, [isModalVisible ]);
 
     return (
         <MetricsContext.Provider value={{ 
@@ -196,12 +194,12 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
 //********************************
 
 
-const convertVelocityFromMsToKmh = (velocity: number): number=> {
+const _convertVelocityFromMsToKmh = (velocity: number): number=> {
     return velocity * VELOCITY_FROM_MS_TO_KMH;
 }
 
 
-const calculateAvgLinearAcceleration = (accelerometerData: AccelerometerMeasurement[]): number=> {
+const _calculateAvgLinearAcceleration = (accelerometerData: AccelerometerMeasurement[]): number=> {
     let velocity = 0;
     if (accelerometerData.length <= 0) {
         return velocity;
