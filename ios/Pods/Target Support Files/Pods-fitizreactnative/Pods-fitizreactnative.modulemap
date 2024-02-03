@@ -1,6 +1,0 @@
-module Pods_fitizreactnative {
-  umbrella header "Pods-fitizreactnative-umbrella.h"
-
-  export *
-  module * { export * }
-}
