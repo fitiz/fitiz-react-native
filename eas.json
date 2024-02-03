@@ -15,7 +15,9 @@
       "extends": "development",
       "distribution": "internal",
       "ios": {
+        "cocoapods" : "1.14.3",
         "simulator": true
+    
       },
       "android": {
         "buildType": "apk"
