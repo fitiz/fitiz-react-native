@@ -1,0 +1,35 @@
+{
+  "name": "pagopa-io-react-native-jwt",
+  "version": "1.1.0",
+  "summary": "Native support for JWT",
+  "homepage": "https://github.com/pagopa/io-react-native-jwt#readme",
+  "license": "MIT",
+  "authors": "PagoPa (https://github.com/pagopa)",
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source": {
+    "git": "https://github.com/pagopa/react-native-jwt.git",
+    "tag": "1.1.0"
+  },
+  "source_files": "ios/**/*.{h,m,mm,swift}",
+  "dependencies": {
+    "JOSESwift": [
+      "~> 2.3"
+    ],
+    "React-Core": [
+
+    ],
+    "RCT-Folly": [
+      "2022.05.16.00"
+    ],
+    "glog": [
+
+    ]
+  },
+  "compiler_flags": "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_CFG_NO_COROUTINES=1 -Wno-comma -Wno-shorten-64-to-32",
+  "pod_target_xcconfig": {
+    "HEADER_SEARCH_PATHS": "\"$(PODS_ROOT)/boost\" \"$(PODS_ROOT)/Headers/Private/Yoga\"",
+    "CLANG_CXX_LANGUAGE_STANDARD": "c++20"
+  }
+}

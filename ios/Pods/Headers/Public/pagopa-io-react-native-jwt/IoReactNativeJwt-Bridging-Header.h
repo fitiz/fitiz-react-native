@@ -1,0 +1,1 @@
+../../../../../node_modules/@pagopa/io-react-native-jwt/ios/IoReactNativeJwt-Bridging-Header.h
