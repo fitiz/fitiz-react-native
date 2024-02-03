@@ -24,7 +24,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Doctor
         run: npx expo install --fix

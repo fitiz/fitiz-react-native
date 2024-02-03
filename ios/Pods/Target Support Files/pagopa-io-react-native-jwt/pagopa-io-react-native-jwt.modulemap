@@ -1,6 +1,0 @@
-module pagopa_io_react_native_jwt {
-  umbrella header "pagopa-io-react-native-jwt-umbrella.h"
-
-  export *
-  module * { export * }
-}

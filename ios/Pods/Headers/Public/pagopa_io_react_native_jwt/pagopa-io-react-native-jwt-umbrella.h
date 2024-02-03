@@ -1,1 +1,0 @@
-../../../Target Support Files/pagopa-io-react-native-jwt/pagopa-io-react-native-jwt-umbrella.h
