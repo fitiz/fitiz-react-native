@@ -84,7 +84,7 @@
           {
               "domain": "dev-mewzvus7n0bttt3p.us.auth0.com"
           }
-      ],
+      ]
     ],
     "experiments": {
       "tsconfigPaths": true
