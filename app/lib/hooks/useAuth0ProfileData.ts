@@ -1,6 +1,6 @@
 
 import { useState, useEffect} from 'react';
-import { Profile, APIResponse} from 'types/profile';
+import { Profile} from 'types/profile';
 import { get } from '../fetchers/fetchers';
 import { AUTH0_DOMAIN } from "@env";
 

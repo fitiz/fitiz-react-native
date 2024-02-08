@@ -7,12 +7,17 @@
       "developmentClient": true,
       "extends": "production",
       "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      }
     },
     "development-simulator": {
       "extends": "development",
       "distribution": "internal",
       "ios": {
+        "cocoapods" : "1.14.3",
         "simulator": true
+    
       },
       "android": {
         "buildType": "apk"

@@ -21,7 +21,6 @@ export const DEFAULT_API_CONFIG: ApiConfig = {
   url: Config.API_URL,
   timeout: 10000,
 }
-
 /**
  * Manages all requests to the API. You can use this class to build out
  * various requests that you need to call from your backend API.
@@ -49,3 +48,4 @@ export class Api {
 
 // Singleton instance of the API for convenience
 export const api = new Api()
+

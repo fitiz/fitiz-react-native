@@ -5,18 +5,22 @@ interface AuthContextData {
     isAuthenticated: boolean;
     isLoading: boolean;
 
-    accessToken: string | null;
+    accessToken: string ;
     login: () => Promise<void>;
     logout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-export const AuthProvider: React.FC = ({children}) => {
-    // §const [isAuthenticated, setIsAuthenticated] = useState(false);
+interface AuthProviderProps {
+    children: React.ReactNode;
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
+    //§const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [accessToken, setAccessToken] = useState<string | null>("h");
+    const [accessToken, setAccessToken] = useState<string>("");
 
     const { authorize, clearSession, getCredentials } = useAuth0();
 
@@ -57,7 +61,7 @@ export const AuthProvider: React.FC = ({children}) => {
         try {
             await clearSession();
             setIsAuthenticated(false);
-            setAccessToken(null);
+            setAccessToken("");
         } catch (e) {
             console.log("Logout error:", e);
         }

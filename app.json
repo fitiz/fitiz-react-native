@@ -16,7 +16,7 @@
     },
     "extra": {
         "eas": {
-            "projectId": "9bc10f89-02ab-4f01-9277-f5504bad77b3"
+            "projectId": "9bc10f89-02ab-4f01-9277-f5504bad77b3"            
         }
     },
     "updates": {
@@ -50,7 +50,7 @@
         "backgroundColor": "#191015"
       },
       "infoPlist": {
-        "NSMotionUsageDescription": "This app requires access to your motion and fitness data to track your steps.",
+        "NSMotionUsageDescription": "This app requires access to your motion and fitness data to track your steps."
       }
     },
     "web": {
@@ -64,21 +64,25 @@
     },
     "plugins": [
       "expo-localization",
+      "expo-font",
       [
         "expo-build-properties",
         {
           "ios": {
-            "newArchEnabled": false
+            "newArchEnabled": false,
+            "deploymentTarget": "14.0"
           },
           "android": {
-            "newArchEnabled": false
+            "compileSdkVersion": 31,
+            "targetSdkVersion": 31,
+            "buildToolsVersion": "31.0.0"
           }
         }
       ],
       [
           "react-native-auth0",
           {
-              domain: "dev-mewzvus7n0bttt3p.us.auth0.com"
+              "domain": "dev-mewzvus7n0bttt3p.us.auth0.com"
           }
       ]
     ],

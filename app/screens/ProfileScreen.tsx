@@ -29,19 +29,19 @@ export const ProfileScreen: FC<ProfileScreenProps> = observer(function ProfileSc
   const [ hasName, setHasName ] = useState(false);
   const [ hasNickname, setHasNickname ] = useState(false);
 
-  const profileData: Profile = useAuth0ProfileData(accessToken);
+  //const profileData: Profile = useAuth0ProfileData(accessToken);
 
 
   useEffect(() => {
-      if (!profileData) {
+      if (!user) {
           setHasPicture(false);
           setHasName(false);
       } else {
-          setHasPicture(profileData.picture && profileData.picture.length > 0 ? true : false);
-          setHasName(profileData.name && profileData.name.length > 0 ? true : false);
-          setHasNickname(profileData.nickname && profileData.nickname.length > 0 ? true : false);
+          setHasPicture(user.picture && user.picture.length > 0 ? true : false);
+          setHasName(user.name && user.name.length > 0 ? true : false);
+          setHasNickname(user.nickname && user.nickname.length > 0 ? true : false);
       }
-  }, [profileData]);
+  }, [user]);
 
 
   const openMenu = () => setMenuVisible(true);
@@ -87,8 +87,8 @@ export const ProfileScreen: FC<ProfileScreenProps> = observer(function ProfileSc
     //}
 
 
-  const imageSource = hasPicture ? { uri: profileData.picture } : SadFaceLogo;
-  const displayName = hasNickname ? profileData.nickname : hasName ? profileData.name : "User";
+  const imageSource = user && hasPicture ? { uri: user.picture } : SadFaceLogo;
+  const displayName = user && hasNickname ? user.nickname : user && hasName ? user.name : "User";
 
   console.log("id", user?.sub);
   return user && (

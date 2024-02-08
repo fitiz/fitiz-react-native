@@ -14,7 +14,7 @@ const RootNavigator: React.FC<RootNavigatorProps> = ({linking, initialState, onS
 
     //disable auth0 temporary to test pedometer
     //(auth0 doesn't work with Expo Go and i can access pedometer on my iphone through Expo Go)
-    const skip = false;
+    const skip = true;
     return user == null && skip ? 
         <AppNavigator 
         linking={linking} 
