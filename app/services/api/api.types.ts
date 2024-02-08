@@ -2,36 +2,45 @@
  * These types indicate the shape of the data you expect to receive from your
  * API endpoint, assuming it's a JSON object like we have.
  */
-export interface EpisodeItem {
-  title: string
-  pubDate: string
-  link: string
-  guid: string
-  author: string
-  thumbnail: string
-  description: string
-  content: string
-  enclosure: {
-    link: string
-    type: string
-    length: number
-    duration: number
-    rating: { scheme: string; value: string }
-  }
-  categories: string[]
+export interface ChallengeResponse {
+  id: string
+  name: string
+  startDate: string
+  finishDate: string
+  locationId: number
 }
 
-export interface ApiFeedResponse {
-  status: string
-  feed: {
-    url: string
-    title: string
-    link: string
-    author: string
-    description: string
-    image: string
-  }
-  items: EpisodeItem[]
+export interface ParticipantCreateRequest {
+  userId: string
+  username: string
+  locationId: number
+}
+
+export interface ParticipantResponse {
+  userId: string
+  username: string
+  locationId: number
+  points: number
+}
+
+export interface LeaderboardUser {
+  username: string
+  rank: number
+  steps: number
+}
+
+export interface LeaderboardResponse {
+  participants: LeaderboardUser[]
+}
+
+export interface ChallengeParticipationRequest {
+  challengeId: string
+  userId: string
+}
+
+export interface ClaimRewardRequest {
+  challengeId: string
+  userId: string
 }
 
 /**
