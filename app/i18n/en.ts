@@ -23,6 +23,21 @@ const en = {
       button: "Let's try this again",
     },
   },
+  challengeScreen: {
+    title: "Challenge",
+    leaderboard: "Leaderboard",
+    noFoundChallengeEmptyState: {
+      heading: "This looks a bit empty",
+      content:
+        "Tap the browse button to see your location-based challenge!",
+      button: "Browse the Challenge",
+    },
+    noParticipatedLeaderboardEmptyState: {
+      heading: "Let's walk!",
+      content: "Participate in the challenge to see your name on the leaderboard!",
+      button: "Participate in Challenge",
+    },
+  }
 }
 
 export default en

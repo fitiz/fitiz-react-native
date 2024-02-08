@@ -6,8 +6,7 @@ import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import { AuthProvider } from "app/context/AuthContext"
 import { AUTH0_DOMAIN, AUTH0_CLIENTID } from "@env"
 
-SplashScreen.preventAutoHideAsync()
-
+SplashScreen.preventAutoHideAsync().then(r => console.log("SplashScreen.preventAutoHideAsync:", r));
 
 const theme = {
     ...DefaultTheme,
