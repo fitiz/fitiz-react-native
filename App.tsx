@@ -5,9 +5,11 @@ import { Auth0Provider } from "react-native-auth0"
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import { AuthProvider } from "app/context/AuthContext"
 import { AUTH0_DOMAIN, AUTH0_CLIENTID } from "@env"
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs(); // Ignore all log notifications
 
-SplashScreen.preventAutoHideAsync()
-
+SplashScreen.preventAutoHideAsync().then(r => console.log("SplashScreen.preventAutoHideAsync:", r));
 
 const theme = {
     ...DefaultTheme,

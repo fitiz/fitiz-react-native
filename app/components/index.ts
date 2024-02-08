@@ -10,3 +10,7 @@ export * from "./Text"
 export * from "./TextField"
 export * from "./Toggle"
 export * from "./EmptyState"
+export * from "./ChallengeHeader"
+export * from "./LeaderboardHeader"
+export * from "./LeaderboardView"
+

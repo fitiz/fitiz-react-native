@@ -1,12 +1,11 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
-import { AppStackScreenProps} from "app/navigators"
+import { AppStackScreenProps } from "app/navigators"
 import { Screen } from "app/components"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { useAuth0 } from "react-native-auth0";
-import { Button, Image, View, StyleSheet, ViewStyle } from "react-native";
-import LogoPrimary from 'assets/images/logoPrimary.png';
-import { Dimensions } from 'react-native';
+import { useAuth0 } from "react-native-auth0"
+import { Button, Dimensions, Image, StyleSheet, View, ViewStyle } from "react-native"
+import LogoPrimary from "assets/images/logoPrimary.png"
 
 interface SignupScreenProps extends AppStackScreenProps<"Signup"> {}
 
@@ -53,15 +52,13 @@ const $root: ViewStyle = {
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const imageHeight = windowHeight * 0.55;
-const imageWidth = windowWidth * 1.0;
-
 const styles = StyleSheet.create({
     logoPrimary: {
-        width: imageWidth,
-        height: imageHeight,    
         alignSelf: 'center',
-        marginTop: 100,
         borderRadius: 200,
+        height: imageHeight,
+        marginTop: 100,
+        width: windowWidth,
     },
 
 })

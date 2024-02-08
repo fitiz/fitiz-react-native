@@ -40,10 +40,11 @@ export class Api {
       timeout: this.config.timeout,
       headers: {
         Accept: "application/json",
+        AccessControlAllowOrigin: "*",
       },
+      withCredentials: true,
     })
   }
-
 }
 
 // Singleton instance of the API for convenience

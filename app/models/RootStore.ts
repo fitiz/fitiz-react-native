@@ -1,9 +1,13 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree"
+import { ChallengeStoreModel } from "app/models/ChallengeStore"
+import { ParticipantStoreModel } from "app/models/ParticipantStore"
 
 /**
  * A RootStore model.
  */
 export const RootStoreModel = types.model("RootStore").props({
+  challengeStore: types.optional(ChallengeStoreModel, {}),
+  participantStore: types.optional(ParticipantStoreModel, {}),
 })
 
 /**

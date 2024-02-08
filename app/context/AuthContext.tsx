@@ -10,13 +10,10 @@ interface AuthContextData {
     logout: () => void;
 }
 
-
-
-
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({children}) => {
-    //§const [isAuthenticated, setIsAuthenticated] = useState(false);
+    // §const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [accessToken, setAccessToken] = useState<string | null>("h");
@@ -26,7 +23,7 @@ export const AuthProvider: React.FC = ({children}) => {
     useEffect(() => {
         const checkToken = async () => {
             try {
-                //check for valid token - if valid, set isAuthenticated to true
+                // check for valid token - if valid, set isAuthenticated to true
                 const credentials = await getCredentials();
                 console.log("Credentials:", credentials);
                 if (credentials) {
@@ -67,7 +64,7 @@ export const AuthProvider: React.FC = ({children}) => {
     };
 
     return (
-        <AuthContext.Provider 
+        <AuthContext.Provider
          value={{
             isAuthenticated,
             isLoading,
@@ -80,33 +77,4 @@ export const AuthProvider: React.FC = ({children}) => {
         </AuthContext.Provider>
     );
 }
-
-//async function refreshToken(credentials: Credentials, setAccessToken: (token: string) => void) {
-//    const { accessToken, refreshToken } = credentials;
-//    const token = refreshToken ? refreshToken : accessToken;
-//
-//    const tokenData = {
-//        grant_type: 'refresh_token',
-//        client_id: AUTH0_CLIENT_ID,
-//        refresh_token: token,
-//    };
-//
-//    const response = await axios.post(AUTH0_DOMAIN + 'oauth/token', tokenData);
-//
-//    const { access_token } = response.data;
-//
-//    setAccessToken(access_token);
-//    return access_token;
-//}
-//
-//
-//const wellKnownURL = AUTH0_DOMAIN + '.well-known/jwks.json';
-//const decodeToken = async (token: string) => {
-//
-//    const jwks = await getRemoteJWKSet(wellKnownURL);
-//    const { protectedHeader, payload } = await verifyJwt(token, jwks);
-//    console.log("Protected header:", protectedHeader);
-//    console.log("Payload:", payload);
-//    return payload;
-//}
 

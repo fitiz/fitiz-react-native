@@ -12,7 +12,7 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 export type AppBottomTabParamList = {
     Home: undefined;
-    Challenges: undefined;
+    Challenge: undefined;
     Profile: undefined;
     Explore: undefined;
 };
@@ -36,28 +36,28 @@ const AppBottomTabs = observer(() => {
                 <Tab.Screen name="Home" component={Screens.HomeScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Ionicons name="home" color={focused ? colors.tint : undefined} size={20}/>
+                        <Ionicons name={focused ? "home" : "home-outline"} color={focused ? "#4ade80" : undefined} size={25}/>
                     ),
                     headerShown: false,
                 }}/>
-                <Tab.Screen name="Challenges" component={Screens.ChallengesScreen} 
+                <Tab.Screen name="Challenge" component={Screens.ChallengeScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Ionicons name="trophy" color={focused ? colors.tint : undefined} size={20}/>
+                        <Ionicons name={focused ? "trophy" : "trophy-outline"} color={focused ? "#4ade80" : undefined} size={25}/>
                     ),
                     headerShown: false,
                 }}/>
                 <Tab.Screen name="Explore" component={Screens.ExploreScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Ionicons name="map" color={focused ? colors.tint : undefined} size={20}/>
+                        <Ionicons name={focused ? "map" : "map-outline"} color={focused ? "#4ade80" : undefined} size={25}/>
                     ),
                     headerShown: false,
                 }}/>
                 <Tab.Screen name="Profile" component={Screens.ProfileScreen} 
                 options={{
                     tabBarIcon : ({ focused }) => (
-                        <Ionicons name="person" color={focused ? colors.tint : undefined} size={20}/>
+                        <Ionicons name={focused ? "person" : "person-outline"} color={focused ? "#4ade80" : undefined} size={25}/>
                     ), 
                     headerShown: false,
                 }}/>
