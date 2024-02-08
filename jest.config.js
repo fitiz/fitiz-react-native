@@ -2,6 +2,10 @@ const { defaults: tsjPreset } = require("ts-jest/presets")
 
 /** @type {import('@jest/types').Config.ProjectConfig} */
 module.exports = {
+  globals: {
+    TextEncoder: require('util').TextEncoder,
+    TextDecoder: require('util').TextDecoder,
+  },
   ...tsjPreset,
   preset: "jest-expo",
   transformIgnorePatterns: [

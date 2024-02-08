@@ -12,7 +12,7 @@ const ChallengeHeader = (props: ChallengeHeaderProps) => {
   return (
     <View style={styles.headerContainer}>
       {/* eslint-disable-next-line react-native/no-color-literals,react-native/no-inline-styles */}
-      <Text preset="heading" style={{color: "#2F4858"}} text={challenge.name}/>
+      <Text preset="heading" style={{color: "#052e16", marginTop: -15}} text={challenge.name}/>
       <Text
         size="md"
         style={styles.metadataText}

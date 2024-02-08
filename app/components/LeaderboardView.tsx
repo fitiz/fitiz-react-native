@@ -1,7 +1,6 @@
 import React from "react"
 import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from "react-native"
 import { Text } from "app/components/Text"
-import LeaderboardHeader from "app/components/LeaderboardHeader"
 import { Card } from "app/components/Card"
 import { ListView } from "app/components/ListView"
 import { spacing } from "app/theme"
@@ -37,9 +36,21 @@ const LeaderboardView = (props: LeaderboardViewProps) => {
       .then(() => setIsLoading(false))
   }
 
+  function formatTimestamp(timestamp: string) {
+    const date = new Date(timestamp);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+
+    return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}:${milliseconds}`;
+  }
+
   return (
     <>
-      <LeaderboardHeader leaderboard={leaderboard} />
       {leaderboard === null ? (isLoading ? (
           <ActivityIndicator />
         ) : (
@@ -66,12 +77,29 @@ const LeaderboardView = (props: LeaderboardViewProps) => {
               data={leaderboard?.participants ?? []}
               extraData={leaderboard?.participants.length ?? 0}
               estimatedItemSize={10}
+              /* eslint-disable-next-line react-native/no-inline-styles */
+              ListFooterComponent={<View style={{
+                marginTop: spacing.md,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center" }}>
+                <Text
+                  preset={"formHelper"}
+                  text={leaderboard?.lastUpdatedTimeMs === 0 ? "" : formatTimestamp(leaderboard?.lastUpdatedTimeMs)}
+                />
+              </View>}
               renderItem={({ item }) => (
                 <Card
                   /* eslint-disable-next-line react-native/no-color-literals,react-native/no-inline-styles */
                   style={participantStore.participant?.username === item.username ? {
                     ...styles.item,
-                    backgroundColor: "#baff56",
+                    backgroundColor: "#86efac",
+                    shadowColor: "#3ce87b",
+                    shadowOffset: { width: 0, height: 0 },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 6,
+                    elevation: 1,
+                    borderColor: "#57e78d",
                   } : styles.item}
                   verticalAlignment="force-footer-bottom"
                   LeftComponent={
@@ -109,6 +137,7 @@ const styles = StyleSheet.create({
     marginTop: -20,
   },
   item: {
+
     marginTop: spacing.md,
     minHeight: 50,
     padding: spacing.md,

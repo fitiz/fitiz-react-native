@@ -38,15 +38,10 @@ export const ChallengeStoreModel = types
         return null
       }
     }),
-    updateLeaderboard: flow( function*(userId: string) {
-      const response = yield challengeApi.getLeaderboard(userId)
-      if (response.kind === "ok") {
-        return response.leaderboard
-      } else {
-        console.error(`Error while fetching leaderboard : ${JSON.stringify(response)}`)
-        return null
-      }
-    })
+    setLeaderboard: (leaderboard: any) => {
+      detach(store.leaderboard);
+      store.setProp("leaderboard", leaderboard);
+    },
   }))
   .views(() => ({
   }))
@@ -57,8 +52,7 @@ export const ChallengeStoreModel = types
         if (response.kind === "ok") {
           const leaderboard = response.leaderboard;
           if (leaderboard) {
-            detach(store.leaderboard);
-            store.setProp("leaderboard", leaderboard);
+            store.setLeaderboard(leaderboard);
           }
         }
       } catch (error) {
