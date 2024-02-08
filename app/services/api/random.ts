@@ -22,7 +22,6 @@ const dota2Nouns = [
   'Witch Doctor',
   'Tidehunter',
   'Sniper',
-  'Queen of Pain',
   'Wraith King',
   'Faceless Void',
   'Rubick',
