@@ -128,7 +128,6 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
                 height: currentMetrics.height, //in cm
                 weight: currentMetrics.weight, //in cm
                 distanceTotal: distanceTotalDistance, //in m
-                distanceFor5SecTimePeriod: distanceFor5SecTimePeriod, //in m
                 speedKmH: speedInKmh, //in km/h
                 speed: speed, //in m/s
                 pace: pace, //in s/m
@@ -140,6 +139,8 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
 
     
     const loadHeightAndWeightFromStorage = async () => {
+        remove('height');
+        remove('weight');
         const height = await loadString('height');
         const weight = await loadString('weight');
         if (height && weight) {
@@ -178,7 +179,7 @@ export const MetricsProvider: React.FC<MetricsProviderProps> = ({ children }) =>
             openModal, 
             closeModal
         }}>
-            <MetricsModal visible={isModalVisible} onClose={closeModal} setHeightAndWidth={setHeightAndWidth}  />
+            {user && <MetricsModal visible={isModalVisible} onClose={closeModal} setHeightAndWidth={setHeightAndWidth}  />}
             {children}
         </MetricsContext.Provider>
     )
