@@ -28,7 +28,7 @@ export const ParticipantStoreModel = types
       // api call to participate in challenge
     }
   }))
-  .views((store) => ({
+  .views(() => ({
   }))
   .actions(() => ({
   }))

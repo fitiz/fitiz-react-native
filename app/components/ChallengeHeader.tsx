@@ -11,7 +11,8 @@ const ChallengeHeader = (props: ChallengeHeaderProps) => {
 
   return (
     <View style={styles.headerContainer}>
-      <Text preset="heading" style={{color: "#2F4858", fontStyle: "italic"}} text={challenge.name}/>
+      {/* eslint-disable-next-line react-native/no-color-literals,react-native/no-inline-styles */}
+      <Text preset="heading" style={{color: "#2F4858"}} text={challenge.name}/>
       <Text
         size="md"
         style={styles.metadataText}
