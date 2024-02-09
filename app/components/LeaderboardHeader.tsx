@@ -50,7 +50,7 @@ const LeaderboardHeader = (props: LeaderboardHeaderProps) => {
             {isEnabled ? <LiveIcon /> : <></>}
             <Text preset={"formLabel"} text={" Live Mode  "} />
             <Switch
-              trackColor={{ false: "#767577", true: "#4ade80" }}
+              trackColor={{ false: "#767577", true: "#57e78d" }}
               thumbColor={isEnabled ? "#f4f3f4" : "#f4f3f4"}
               ios_backgroundColor="#3e3e3e"
               onValueChange={toggleSwitch}
