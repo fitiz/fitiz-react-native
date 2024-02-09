@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/space-grotesk": "^0.2.2",
+    "@expo/vector-icons": "^14.0.0",
     "@pagopa/io-react-native-jwt": "^1.1.0",
     "@react-native-async-storage/async-storage": "1.21.0",
     "@react-navigation/bottom-tabs": "^6.5.11",

@@ -39,7 +39,7 @@ const LiveIcon = () => {
           opacity: isBlinking ? animation : 1,
         }}
       >
-        <Ionicons name={'radio-button-on'} color={'#4ade80'} size={20} />
+        <Ionicons name={'radio-button-on'} color={'#57E78DFF'} size={20} />
       </Animated.View>
     </TouchableOpacity>
   );

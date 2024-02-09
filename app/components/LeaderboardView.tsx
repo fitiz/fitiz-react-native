@@ -8,6 +8,8 @@ import { LeaderboardUser } from "app/services/api"
 import { EmptyState } from "app/components/EmptyState"
 import { useStores } from "app/models"
 import { delay } from "app/utils/delay"
+import { Ionicons } from "@expo/vector-icons"
+import { ListItem } from "app/components/ListItem"
 
 interface LeaderboardViewProps {
   leaderboard: any;
@@ -93,13 +95,14 @@ const LeaderboardView = (props: LeaderboardViewProps) => {
                   /* eslint-disable-next-line react-native/no-color-literals,react-native/no-inline-styles */
                   style={participantStore.participant?.username === item.username ? {
                     ...styles.item,
-                    backgroundColor: "#86efac",
-                    shadowColor: "#3ce87b",
+                    backgroundColor: "#7dfbbd",
+                    shadowColor: "#09e056",
                     shadowOffset: { width: 0, height: 0 },
-                    shadowOpacity: 0.8,
+                    shadowOpacity: 0.9,
                     shadowRadius: 6,
                     elevation: 1,
-                    borderColor: "#57e78d",
+                    borderColor: "#8effc5",
+
                   } : styles.item}
                   verticalAlignment="force-footer-bottom"
                   LeftComponent={
@@ -107,12 +110,19 @@ const LeaderboardView = (props: LeaderboardViewProps) => {
                       {item.rank}
                     </Text>}
                   RightComponent={
+                    <>
                     <Text weight={"bold"} preset={"subheading"}>
                       {item.steps}
                     </Text>
+                    <Ionicons  name={participantStore.participant?.username === item.username ?
+                      'footsteps': 'footsteps-outline'} color={'black'} style={{marginLeft:10}} size={24} />
+                    </>
+
                   }
                   ContentComponent={
-                    <Text text={item.username} preset={"subheading"} />
+                    <ListItem containerStyle={{marginVertical: -10}} TextProps={{ numberOfLines: 1 }}>
+                      <Text text={item.username} preset={"subheading"} />
+                    </ListItem>
                   }
                 >
                 </Card>
@@ -137,8 +147,10 @@ const styles = StyleSheet.create({
     marginTop: -20,
   },
   item: {
-
-    marginTop: spacing.md,
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: spacing.xs,
     minHeight: 50,
     padding: spacing.md,
   },
