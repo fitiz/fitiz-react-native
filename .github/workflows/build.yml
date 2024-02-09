@@ -28,4 +28,7 @@ jobs:
 
       - name: Doctor
         run: npx expo install --fix
+        
+      - name: 🏗 Create a build for emulator/simulator
+        run: eas build --profile development --platform android
 
