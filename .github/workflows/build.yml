@@ -30,5 +30,5 @@ jobs:
         run: npx expo install --fix
         
       - name: 🏗 Create a build for emulator/simulator
-        run: eas build --profile development --platform android
+        run: eas build --profile development --platform ios
 
