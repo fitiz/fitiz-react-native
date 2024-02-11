@@ -32,3 +32,4 @@ jobs:
       - name: 🏗 Create a build for emulator/simulator
         run: eas build --profile development --platform ios
 
+
